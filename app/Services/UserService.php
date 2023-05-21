@@ -6,9 +6,9 @@ use App\Models\Seat;
 use App\Models\Ticket;
 use PhpParser\Error;
 
-class SeatService
+class UserService
 {
-    public function create(array $params): Seat
+    public function createSeat(array $params): Seat
     {
 
         if (!$params['seats']) {
@@ -21,4 +21,14 @@ class SeatService
         }
         return $ticket;
     }
+
+    public function createTicket(array $params): Ticket
+    {
+        $ticket = Ticket::create($params);
+
+        $this->createSeat()->create($params);
+        return $ticket->whereId($ticket->id)->with('session')->with('seats')->first();
+    }
 }
+
+

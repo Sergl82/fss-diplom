@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketRequest;
-use App\Services\TicketService;
+use App\Services\UserService;
 use Illuminate\Http\Response;
 
 class TicketController extends Controller
 {
+    private UserService $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -18,7 +25,9 @@ class TicketController extends Controller
     public function store(TicketRequest $request): Response
     {
         $params = $request->validated();
-        $ticket = (new TicketService())->create($params);
+        $ticket = $this->userService->createTicket($params);
         return response($ticket, 201);
     }
+
+
 }

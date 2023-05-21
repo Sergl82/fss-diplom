@@ -6,7 +6,7 @@
 * **password:** admin123
 * /admin/login
 
-PHP ver. 8.0, Laravel ver. 9.47.0, Composer, JS, React, SQLite
+PHP ver. 8.0, Laravel ver. 9.47.0, Composer, JS, React, mysql
 
 ### Запуск:
 
@@ -16,7 +16,6 @@ composer install
 
 установка файлa .env в корень проекта,
 <br/>
-создание базы данных database.sqlite в папке database
 
 Создание миграции:
 

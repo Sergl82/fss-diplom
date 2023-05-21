@@ -15,10 +15,8 @@ class CreateSeatTicketTable extends Migration
     {
         Schema::create('seat_ticket', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('ticket_id');
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-            $table->unsignedInteger('seat_id');
-            $table->foreign('seat_id')->references('id')->on('seats')->onDelete('cascade');
+            $table->foreignId('ticket_id')->constrained()->onDelete('cascade');
+            $table->foreignId('seat_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

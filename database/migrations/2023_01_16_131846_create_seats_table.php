@@ -17,8 +17,7 @@ class CreateSeatsTable extends Migration
             $table->id();
             $table->integer('number');
             $table->string('status');
-            $table->unsignedInteger('cinema_hall_id');
-            $table->foreign('cinema_hall_id')->references('id')->on('cinema_halls')->onDelete('cascade');
+            $table->foreignId('cinema_hall_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

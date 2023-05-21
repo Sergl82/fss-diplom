@@ -12,8 +12,8 @@ class CreateFilmsTable extends Migration
             $table->id();
             $table->string('title', 235);
             $table->string('description', 500);
-            $table->integer('duration');
-            $table->string('country', 50);
+            $table->integer('duration')->nullable();
+            $table->string('country', 50)->nullable();
             $table->string('poster');
             $table->timestamps();
         });
